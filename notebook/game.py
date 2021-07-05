@@ -89,7 +89,7 @@ class Two_Player_Minus_Game(Game):
         target: int # change this to the class of the input instance
         network_0: network for the first player
         network_1: network for the second player
-        rollout_ready: ???
+        rollout_ready: if networks should be used in the rollout
         fsize: width and length of the input instance (28)
         ksize: kernel size, size of super pixel (3)
         ratio: weight of the probability in reward (0.0)
@@ -115,7 +115,7 @@ class Two_Player_Minus_Game(Game):
         self.network_0 = network_0
         self.network_1 = network_1
         self.max_depth = len(self.action_space)
-        self.offset = 1 # ??
+        self.offset = 1 # normalization to have a reward between 0 and 1
         self.ratio = ratio 
         self.threshold = max(self.get_prob_with_node(MC_node(self.initial_state)) - threshold, 0.5) # ?? 
         self.threshold2 = threshold2
